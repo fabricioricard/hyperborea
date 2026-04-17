@@ -277,4 +277,22 @@ buyButtons.forEach(btn => {
     });
 });
 
+// Botão Voltar ao Topo
+const backToTopBtn = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 console.log('🎸 Hyperborea website loaded successfully!');
