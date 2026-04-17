@@ -91,7 +91,7 @@ body {
 }
 
 .logo-image {
-    height: 55px;                    /* Ajuste o tamanho da logo aqui */
+    height: 100px;                    /* Ajuste o tamanho da logo aqui */
     width: auto;
     margin-bottom: 6px;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
