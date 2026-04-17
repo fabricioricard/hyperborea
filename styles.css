@@ -1190,3 +1190,29 @@ section {
         width: 100%;
     }
 }
+
+/* ==================== HERO LOGO EM CIMA DO TÍTULO ==================== */
+.hero-logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.hero-logo {
+    height: 130px;        /* ← Mude este valor para deixar a logo maior ou menor */
+    width: auto;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.6));
+    transition: transform 0.4s ease;
+}
+
+.hero-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Centraliza melhor o título */
+.hero-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
