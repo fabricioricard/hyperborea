@@ -295,4 +295,46 @@ backToTopBtn.addEventListener('click', () => {
     });
 });
 
+// ==================== PLAYER DE MÚSICA ====================
+let currentAudio = null;
+let currentButton = null;
+
+document.querySelectorAll('.play-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const songId = this.getAttribute('data-song');
+        if (!songId) return;
+
+        const audio = document.getElementById(`audio-${songId}`);
+        if (!audio) return;
+
+        // Se for a mesma música que está tocando
+        if (currentAudio === audio) {
+            if (audio.paused) {
+                audio.play();
+                this.querySelector('.play-icon').innerHTML = `<rect x="6" y="4" width="4" height="16" fill="currentColor"></rect><rect x="14" y="4" width="4" height="16" fill="currentColor"></rect>`;
+            } else {
+                audio.pause();
+                this.querySelector('.play-icon').innerHTML = `<polygon points="5 3 19 12 5 21 5 3"></polygon>`;
+            }
+            return;
+        }
+
+        // Pausa a música anterior
+        if (currentAudio) {
+            currentAudio.pause();
+            if (currentButton) {
+                currentButton.querySelector('.play-icon').innerHTML = `<polygon points="5 3 19 12 5 21 5 3"></polygon>`;
+            }
+        }
+
+        // Toca a nova música
+        audio.play().catch(err => console.log("Erro ao reproduzir:", err));
+        currentAudio = audio;
+        currentButton = this;
+
+        // Muda ícone para pause
+        this.querySelector('.play-icon').innerHTML = `<rect x="6" y="4" width="4" height="16" fill="currentColor"></rect><rect x="14" y="4" width="4" height="16" fill="currentColor"></rect>`;
+    });
+});
+
 console.log('🎸 Hyperborea website loaded successfully!');
