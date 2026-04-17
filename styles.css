@@ -79,33 +79,48 @@ body {
     align-items: center;
 }
 
-/* Logo com imagem em cima + texto abaixo */
+/* Logo centralizada: imagem em cima + nome + subtítulo abaixo */
 .logo {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: auto;
-    min-height: 85px;
-    line-height: 1;
+    min-height: 90px;
+    text-align: center;
 }
 
 .logo-image {
-    height: 52px;           /* ajuste este valor se quiser a logo maior ou menor */
+    height: 55px;                    /* Ajuste o tamanho da logo aqui */
     width: auto;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
 }
 
-.logo-text {
+.logo-text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.logo-main {
     font-family: var(--font-display);
-    font-size: 1.35rem;
+    font-size: 1.45rem;
     letter-spacing: 3px;
+    font-weight: 700;
     background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 700;
+}
+
+.logo-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    margin-top: 2px;
 }
 
 .logo:hover .logo-image {
