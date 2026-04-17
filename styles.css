@@ -1191,22 +1191,30 @@ section {
     }
 }
 
-/* ==================== HERO LOGO EM CIMA DO TÍTULO ==================== */
+/* ==================== HERO LOGO GRANDE ==================== */
 .hero-logo-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .hero-logo {
-    height: 130px;        /* ← Mude este valor para deixar a logo maior ou menor */
+    height: 180px;        /* Tamanho aumentado - pode mudar para 160px, 200px, etc. */
     width: auto;
-    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.6));
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.55));
     transition: transform 0.4s ease;
 }
 
 .hero-logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
+}
+
+/* Ajuste no hero text para ficar mais equilibrado sem o título */
+.hero-text {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 /* Centraliza melhor o título */
