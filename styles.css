@@ -1258,3 +1258,25 @@ section {
 .music-card:hover .music-cover img {
     transform: scale(1.08);
 }
+
+/* Imagem real das camisetas */
+.product-image-real {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+    background: #1a2338;
+    display: block;
+}
+
+.product-image {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #1a2338;
+}
+
+/* Remove as opções de cor */
+.product-colors {
+    display: none;
+}
