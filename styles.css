@@ -1,12 +1,13 @@
 :root {
-    /* Colors */
-    --color-primary: #FF3366;
-    --color-secondary: #6C5CE7;
-    --color-accent: #00D9FF;
-    --color-dark: #0A0E27;
-    --color-dark-alt: #151A35;
+    /* Nova paleta baseada no logo (amarelo/laranja + azul escuro) */
+    --color-primary: #FFAA00;
+    --color-secondary: #FF6600;
+    --color-accent: #FFDD44;
+    
+    --color-dark: #0A1329;
+    --color-dark-alt: #111F3D;
     --color-light: #FFFFFF;
-    --color-gray: #8B92B0;
+    --color-gray: #A0A8C0;
     --color-gray-light: #E5E8F0;
     
     /* Typography */
@@ -24,7 +25,7 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
     --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.2);
-    --shadow-glow: 0 0 30px rgba(255, 51, 102, 0.3);
+    --shadow-glow: 0 0 30px rgba(255, 170, 0, 0.45);
     
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -64,7 +65,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(10, 14, 39, 0.95);
+    background: rgba(10, 19, 41, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -78,14 +79,22 @@ body {
     align-items: center;
 }
 
+/* Logo como imagem */
 .logo {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    letter-spacing: 3px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    height: 58px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 100%;
+    width: auto;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-image {
+    transform: scale(1.05);
 }
 
 .nav-links {
@@ -158,11 +167,11 @@ body {
     position: absolute;
     inset: 0;
     background: radial-gradient(ellipse at 30% 50%, 
-        rgba(108, 92, 231, 0.15) 0%, 
-        transparent 50%),
-        radial-gradient(ellipse at 70% 50%, 
-        rgba(255, 51, 102, 0.15) 0%, 
-        transparent 50%);
+        rgba(255, 170, 0, 0.22) 0%, 
+        transparent 55%),
+        radial-gradient(ellipse at 70% 40%, 
+        rgba(255, 102, 0, 0.18) 0%, 
+        transparent 65%);
 }
 
 .hero-pattern {
@@ -202,9 +211,9 @@ body {
     line-height: 0.9;
     letter-spacing: 8px;
     background: linear-gradient(135deg, 
-        var(--color-light) 0%, 
-        var(--color-primary) 50%, 
-        var(--color-accent) 100%);
+        #FFAA00 0%, 
+        #FFDD44 40%, 
+        #FFFFFF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -293,7 +302,7 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 40px rgba(255, 51, 102, 0.5);
+    box-shadow: 0 0 45px rgba(255, 170, 0, 0.6);
 }
 
 .btn-secondary {
@@ -361,7 +370,7 @@ section {
 .section-number {
     font-family: var(--font-display);
     font-size: 4rem;
-    color: rgba(255, 51, 102, 0.2);
+    color: rgba(255, 170, 0, 0.2);
     line-height: 1;
 }
 
@@ -483,7 +492,7 @@ section {
 .music-card:hover {
     transform: translateY(-10px);
     border-color: var(--color-primary);
-    box-shadow: 0 10px 30px rgba(255, 51, 102, 0.2);
+    box-shadow: 0 10px 30px rgba(255, 170, 0, 0.2);
 }
 
 .music-cover {
@@ -706,7 +715,7 @@ section {
 .product-card:hover {
     transform: translateY(-10px);
     border-color: var(--color-primary);
-    box-shadow: 0 20px 40px rgba(255, 51, 102, 0.2);
+    box-shadow: 0 20px 40px rgba(255, 170, 0, 0.2);
 }
 
 .product-badge {
@@ -845,19 +854,6 @@ section {
     transform: scale(1.1);
 }
 
-.color-btn::after {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    transition: border-color var(--transition-fast);
-}
-
-.color-btn.active::after {
-    border-color: var(--color-primary);
-}
-
 .product-footer {
     display: flex;
     justify-content: space-between;
@@ -893,7 +889,7 @@ section {
 
 .btn-buy:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 40px rgba(255, 51, 102, 0.5);
+    box-shadow: 0 0 40px rgba(255, 170, 0, 0.5);
 }
 
 .shop-info {
@@ -973,7 +969,7 @@ section {
 }
 
 .contact-method:hover {
-    background: rgba(255, 51, 102, 0.1);
+    background: rgba(255, 170, 0, 0.1);
     transform: translateX(5px);
 }
 
