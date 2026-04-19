@@ -723,9 +723,10 @@ section {
 }
 
 .shop-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
 }
 
 .product-card {
