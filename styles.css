@@ -724,17 +724,23 @@ section {
 
 .shop-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: var(--spacing-lg);
+    /* auto-fill mantém o tamanho fixo mesmo que só existam 2 itens */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 350px)); 
+    gap: 30px;
+    justify-content: center; /* Centraliza os produtos na linha */
     margin-bottom: var(--spacing-xl);
 }
 
 .product-card {
-    border-radius: 15px;   /* era 20px */
-    padding: var(--spacing-md);
+    background: var(--color-dark-alt);
+    border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all var(--transition-base);
+    position: relative;
+    width: 100%; /* Garante que respeite o limite do grid */
+    max-width: 350px; /* Tamanho máximo de cada camisa */
+    margin: 0 auto;
 }
 
 .product-card:hover {
