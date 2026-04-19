@@ -295,6 +295,128 @@ backToTopBtn.addEventListener('click', () => {
     });
 });
 
+let cart = JSON.parse(localStorage.getItem('hyperboreaCart')) || [];
+
+// Atualiza contador
+function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cart-count').textContent = count;
+}
+
+// Adicionar ao carrinho
+function addToCart(id, name, price, sku, size) {
+    if (!size) {
+        alert("Por favor, escolha um tamanho antes de adicionar.");
+        return;
+    }
+
+    const existing = cart.find(item => item.id === id && item.size === size);
+    
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({
+            id: id,
+            name: name,
+            price: price,
+            sku: sku,
+            size: size,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem('hyperboreaCart', JSON.stringify(cart));
+    updateCartCount();
+    alert(`${name} (Tamanho ${size}) adicionado ao carrinho!`);
+}
+
+// Mostrar / esconder modal
+function toggleCartModal() {
+    const modal = document.getElementById('cart-modal');
+    modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+    renderCart();
+}
+
+// Renderizar itens do carrinho
+function renderCart() {
+    const container = document.getElementById('cart-items');
+    container.innerHTML = '';
+
+    if (cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center; padding:30px; color:#777;">Seu carrinho está vazio.</p>';
+        document.getElementById('cart-total').textContent = '0,00';
+        return;
+    }
+
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+            <div>
+                <strong>${item.name}</strong> - ${item.size}<br>
+                <small>R$ ${item.price.toFixed(2)} × ${item.quantity}</small>
+            </div>
+            <div style="text-align:right;">
+                R$ ${subtotal.toFixed(2)}
+                <button onclick="removeFromCart(${index})" style="margin-left:10px; color:#e74c3c; background:none; border:none; font-size:18px;">×</button>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+
+    document.getElementById('cart-total').textContent = total.toFixed(2);
+}
+
+// Remover item
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('hyperboreaCart', JSON.stringify(cart));
+    renderCart();
+    updateCartCount();
+}
+
+// Limpar carrinho
+function clearCart() {
+    if (confirm("Tem certeza que deseja limpar o carrinho?")) {
+        cart = [];
+        localStorage.setItem('hyperboreaCart', JSON.stringify(cart));
+        renderCart();
+        updateCartCount();
+    }
+}
+
+// Finalizar via WhatsApp
+function finalizeOrder() {
+    if (cart.length === 0) return;
+
+    let message = "Olá! Quero fazer o seguinte pedido da Hyperborea:\n\n";
+    
+    let total = 0;
+    cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+        message += `• ${item.name} (${item.size}) - ${item.quantity} un. = R$ ${subtotal.toFixed(2)}\n`;
+    });
+
+    message += `\nTotal: R$ ${total.toFixed(2)}\n\n`;
+    message += "Por favor, me confirme o endereço de entrega e a forma de pagamento (PIX).";
+
+    const whatsappNumber = "71984029024"; // ← Troque pelo seu número real (com DDD, sem espaços)
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    
+    window.open(url, '_blank');
+    // Opcional: limpar carrinho após envio
+    // clearCart();
+}
+
+// Inicializar
+updateCartCount();
+
 // ==================== PLAYER DE MÚSICA ====================
 let currentAudio = null;
 let currentButton = null;
