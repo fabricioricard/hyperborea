@@ -724,11 +724,11 @@ section {
 
 .shop-grid {
     display: grid;
-    /* auto-fill mantém o tamanho fixo mesmo que só existam 2 itens */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 350px)); 
+    /* Usa auto-fit para adaptar melhor as colunas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 30px;
-    justify-content: center; /* Centraliza os produtos na linha */
-    margin-bottom: var(--spacing-xl);
+    max-width: 800px; /* Limita a largura total para 2 camisas */
+    margin: 0 auto var(--spacing-xl) auto; /* Centraliza o grid */
 }
 
 .product-card {
@@ -739,8 +739,6 @@ section {
     transition: all var(--transition-base);
     position: relative;
     width: 100%; /* Garante que respeite o limite do grid */
-    max-width: 350px; /* Tamanho máximo de cada camisa */
-    margin: 0 auto;
 }
 
 .product-card:hover {
@@ -1155,6 +1153,7 @@ section {
     
     .shop-grid {
         grid-template-columns: 1fr;
+        max-width: 400px; /* Limita largura no mobile */
     }
 }
 
@@ -1216,7 +1215,7 @@ section {
 /* ==================== CARRINHO ==================== */
 .cart-button {
     position: fixed;
-    bottom: 30px;
+    bottom: 100px; /* Movido para cima para não sobrepor o botão voltar ao topo */
     right: 30px;
     background: #111;
     color: #fff;
@@ -1329,7 +1328,7 @@ section {
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(255, 170, 0, 0.4);
     transition: all 0.3s ease;
-    z-index: 999;
+    z-index: 999; /* Menor que o carrinho (9999) */
 }
 
 .back-to-top:hover {
