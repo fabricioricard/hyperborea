@@ -1212,6 +1212,105 @@ section {
     gap: 6px;
 }
 
+/* ==================== CARRINHO ==================== */
+.cart-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #111;
+    color: #fff;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    font-size: 28px;
+    border: 2px solid #e74c3c;
+    box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
+    z-index: 9999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #e74c3c;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.92);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-modal-content {
+    background: #0f0f0f;
+    width: 92%;
+    max-width: 480px;
+    border-radius: 12px;
+    padding: 20px;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 1px solid #333;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+    font-size: 0.95em;
+}
+
+.cart-total {
+    font-size: 1.4em;
+    text-align: right;
+    margin: 20px 0 15px;
+    font-weight: 700;
+}
+
+.size-select {
+    padding: 6px 10px;
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
 /* ==================== BOTÃO VOLTAR AO TOPO ==================== */
 .back-to-top {
     position: fixed;
