@@ -266,18 +266,23 @@
                             </div>
                         </div>
                         <div class="product-footer">
-                            <span class="product-price">R$ 89,90</span>
-                            <button class="btn-buy">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                Comprar
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <span class="product-price">R$ 89,90</span>
+    <select class="size-select" id="size-logo">
+        <option value="">Escolha o tamanho</option>
+        <option value="P">P</option>
+        <option value="M">M</option>
+        <option value="G">G</option>
+        <option value="GG">GG</option>
+    </select>
+    <button class="btn-buy" onclick="addToCart(1, 'Camiseta Hyperborea Logo', 89.90, 'HB-LOGO', document.getElementById('size-logo').value)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        Adicionar ao Carrinho
+    </button>
+</div>
 
                 <!-- Camiseta Tour Edition -->
                 <div class="product-card">
@@ -300,16 +305,23 @@
                             </div>
                         </div>
                         <div class="product-footer">
-                            <span class="product-price">R$ 99,90</span>
-                            <button class="btn-buy">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                                Comprar
-                            </button>
-                        </div>
+    <span class="product-price">R$ 99,90</span>
+    <select class="size-select" id="size-tour">
+        <option value="">Escolha o tamanho</option>
+        <option value="P">P</option>
+        <option value="M">M</option>
+        <option value="G">G</option>
+        <option value="GG">GG</option>
+    </select>
+    <button class="btn-buy" onclick="addToCart(2, 'Camiseta Tour Edition', 99.90, 'HB-TOUR', document.getElementById('size-tour').value)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        Adicionar ao Carrinho
+    </button>
+</div>
                     </div>
                 </div>
             </div>
@@ -428,6 +440,35 @@
         </svg>
     </button>
 
+<!-- Carrinho Flutuante -->
+<button id="cart-button" class="cart-button" onclick="toggleCartModal()">
+    🛒 <span id="cart-count" class="cart-count">0</span>
+</button>
+
+<!-- Modal do Carrinho -->
+<div id="cart-modal" class="cart-modal">
+    <div class="cart-modal-content">
+        <div class="cart-header">
+            <h2>Seu Carrinho Hyperborea</h2>
+            <button onclick="toggleCartModal()" class="close-btn">✕</button>
+        </div>
+        
+        <div id="cart-items" class="cart-items"></div>
+        
+        <div class="cart-total">
+            Total: R$ <span id="cart-total">0,00</span>
+        </div>
+        
+        <button onclick="finalizeOrder()" class="btn btn-primary" style="width:100%; padding:14px; font-size:1.1em;">
+            Finalizar Pedido no WhatsApp
+        </button>
+        
+        <button onclick="clearCart()" style="margin-top:10px; width:100%; background:transparent; color:#ccc; border:1px solid #555;">
+            Limpar Carrinho
+        </button>
+    </div>
+</div>
+                            
     <script src="script.js"></script>
 </body>
 </html>
