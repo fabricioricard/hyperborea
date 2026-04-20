@@ -896,6 +896,7 @@ section {
     justify-content: space-between;
     align-items: center;
     gap: var(--spacing-sm);
+    flex-wrap: nowrap; /* Força elementos a ficarem na mesma linha */
 }
 
 .product-price {
@@ -903,6 +904,7 @@ section {
     font-size: 2rem;
     color: var(--color-primary);
     letter-spacing: 1px;
+    white-space: nowrap; /* Evita quebra do preço */
 }
 
 .btn-buy {
@@ -1324,8 +1326,9 @@ section {
     font-family: var(--font-body);
     font-size: 0.9rem;
     cursor: pointer;
-    width: 100%;
-    max-width: 180px;
+    width: auto;
+    min-width: 120px;
+    flex-shrink: 0; /* Não encolhe quando há pouco espaço */
 }
 
 /* ==================== BOTÃO VOLTAR AO TOPO ==================== */
