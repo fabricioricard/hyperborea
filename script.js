@@ -215,9 +215,8 @@ const throttledScroll = throttle(() => {
 
 window.addEventListener('scroll', throttledScroll);
 
-// Shop - Size and Color Selection
+// Shop - Size Selection
 const sizeButtons = document.querySelectorAll('.size-btn');
-const colorButtons = document.querySelectorAll('.color-btn');
 
 sizeButtons.forEach(btn => {
     btn.addEventListener('click', function() {
@@ -229,53 +228,17 @@ sizeButtons.forEach(btn => {
     });
 });
 
-colorButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-        // Remove active from siblings
-        const siblings = this.parentElement.querySelectorAll('.color-btn');
-        siblings.forEach(s => s.classList.remove('active'));
-        // Add active to clicked
-        this.classList.add('active');
-    });
-});
-
-// Shop - Buy Button
-const buyButtons = document.querySelectorAll('.btn-buy');
-
-buyButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-        const card = this.closest('.product-card');
-        const productName = card.querySelector('.product-name').textContent;
-        const price = card.querySelector('.product-price').textContent;
-        const selectedSize = card.querySelector('.size-btn.active');
-        const selectedColor = card.querySelector('.color-btn.active');
-        
-        if (!selectedSize) {
-            alert('Por favor, selecione um tamanho!');
-            return;
-        }
-        
-        if (!selectedColor) {
-            alert('Por favor, selecione uma cor!');
-            return;
-        }
-        
-        const size = selectedSize.dataset.size;
-        const color = selectedColor.dataset.color;
-        
-        // Here you would typically redirect to a checkout page or open a payment modal
-        // For now, we'll show a confirmation
-        const message = `Produto: ${productName}\nTamanho: ${size}\nCor: ${color}\nPreço: ${price}\n\nEm breve você será redirecionado para o checkout!`;
-        alert(message);
-        
-        // You can integrate with payment platforms like:
-        // - Stripe
-        // - PayPal
-        // - Mercado Pago
-        // - PagSeguro
-        // Example: window.location.href = 'checkout.html?product=' + productName + '&size=' + size + '&color=' + color;
-    });
-});
+// Função para pegar o tamanho selecionado
+function getSelectedSize(button) {
+    const card = button.closest('.product-card');
+    const selectedSizeBtn = card.querySelector('.size-btn.active');
+    
+    if (!selectedSizeBtn) {
+        return '';
+    }
+    
+    return selectedSizeBtn.getAttribute('data-size');
+}
 
 // Botão Voltar ao Topo
 const backToTopBtn = document.getElementById('back-to-top');
