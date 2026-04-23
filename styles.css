@@ -515,6 +515,10 @@ section {
     font-size: 0.95rem;
 }
 
+.image-placeholder {
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
 /* Music Section */
 .music {
     background: var(--color-dark);
