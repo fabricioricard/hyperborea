@@ -478,27 +478,28 @@ section {
 }
 
 .image-placeholder {
-    width: 250px; /* tamanho do quadradinho */
-    height: 250px;
-    
+    width: 100%;
+    max-width: 320px; /* 🔥 tamanho ideal */
+    aspect-ratio: 1/1;
+
+    border-radius: 20px;
+    overflow: hidden;
+
     background: linear-gradient(135deg, 
         rgba(108, 92, 231, 0.1), 
         rgba(255, 51, 102, 0.1));
-        
-    border-radius: 20px;
-    overflow: hidden; /* ESSENCIAL */
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     border: 2px dashed rgba(255, 255, 255, 0.2);
 }
 
-.image-placeholder {
+.image-placeholder img {
     width: 100%;
-    max-width: 250px;
-    aspect-ratio: 1/1;
+    height: 100%;
+    object-fit: cover;
 }
 
 .image-placeholder:hover img {
