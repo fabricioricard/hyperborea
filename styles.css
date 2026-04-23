@@ -479,7 +479,7 @@ section {
 
 .image-placeholder {
     width: 100%;
-    max-width: 450px; /* ⬅️ aumentamos mais */
+    max-width: 400px; /* ⬅️ aumentamos mais */
 
     aspect-ratio: 1/1;
     border-radius: 20px;
